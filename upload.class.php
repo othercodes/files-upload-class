@@ -12,6 +12,7 @@ class Upload {
     private $valid = TRUE;
     private $storedDir;
     private $storedFile;
+    private $storedFileExt;
     
     /**
      * Crea el objeto de subida.
@@ -32,13 +33,13 @@ class Upload {
      * @param array $allowedTypes lista de tipos MIME validos.
      * @return boolean
      */
-    public function validate($allowedSize, $allowedExt, $allowedTypes) {      
-        $currentExt = end(explode(".", $this->file['name']));
+    public function validate($allowedSize, $allowedExt, $allowedTypes) {     
+        $this->storedFileExt = end(explode(".", $this->file['name']));
         $allowedSize = $allowedSize * (pow(1024,2));
         if($this->file['size'] > $allowedSize){
             $this->valid = FALSE;
         }
-        if(!in_array($currentExt, $allowedExt)){
+        if(!in_array($this->storedFileExt, $allowedExt)){
             $this->valid = FALSE;
         }
         if(!in_array($this->file['type'], $allowedTypes)){
@@ -73,7 +74,7 @@ class Upload {
      */
     public function rename($new_name){
         if($this->valid == TRUE){
-            rename($this->storedFile,$this->storedDir.$new_name);
+            rename($this->storedFile,$this->storedDir.$new_name.$this->storedFileExt);
         } else {
             return FALSE;
         }
@@ -86,7 +87,7 @@ class Upload {
      */
     public function addPrefix($prefix){
         if($this->valid == TRUE){
-            rename($this->storedFile,$this->storedDir.$prefix."_".$this->file['name']);
+            rename($this->storedFile,$this->storedDir.$prefix."_".$this->file['name'].$this->storedFileExt);
         } else {
             return FALSE;
         }
