@@ -74,7 +74,7 @@ class Upload {
      */
     public function rename($new_name){
         if($this->valid == TRUE){
-            rename($this->storedFile,$this->storedDir.$new_name.$this->storedFileExt);
+            rename($this->storedFile,$this->storedDir.$new_name.".".$this->storedFileExt);
         } else {
             return FALSE;
         }
@@ -87,7 +87,7 @@ class Upload {
      */
     public function addPrefix($prefix){
         if($this->valid == TRUE){
-            rename($this->storedFile,$this->storedDir.$prefix."_".$this->file['name'].$this->storedFileExt);
+            rename($this->storedFile,$this->storedDir.$prefix."_".$this->file['name'].".".$this->storedFileExt);
         } else {
             return FALSE;
         }
