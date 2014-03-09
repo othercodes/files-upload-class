@@ -16,7 +16,7 @@ Uso
 
 Bien ahora veamos un ejemplo de uso de esta clase, supongamos que tenemos un formulario desde el cual subimos un archivo:
 
-**upload.html**
+**example-upload.html**
 ```html
 <!DOCTYPE html>
 <html>
@@ -37,7 +37,7 @@ Bien ahora veamos un ejemplo de uso de esta clase, supongamos que tenemos un for
 
 Es importante recordar que cuando queremos enviar archivos debemos establecer en el formulario el atributo enctype con el valor *multipart/form-data*, ademas debemos usar el elemento input con el atributo type en file y asignarme un nombre desde el atributo name.
 
-**upload.php**
+**example-upload.php**
 ```php 
 include 'upload.class.php';
 if (isset($_FILES['file'])) {
