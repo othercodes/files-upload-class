@@ -56,11 +56,11 @@ class Upload {
     public function save($path){
         if($this->valid == TRUE){
             $this->storedDir = $path;
-            $this->storedFile = $path.$this->file['name'];
+            $this->storedFile = $path.microtime().$this->file['name'];
             if(file_exists($this->storedFile)){
                 return FALSE;
             } else {
-                move_uploaded_file($this->file['tmp_name'],microtime().$this->storedFile);
+                move_uploaded_file($this->file['tmp_name'],$this->storedFile);
                 return TRUE;
             }
         } else {
