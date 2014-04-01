@@ -60,7 +60,7 @@ class Upload {
             if(file_exists($this->storedFile)){
                 return FALSE;
             } else {
-                move_uploaded_file($this->file['tmp_name'],$this->storedFile);
+                move_uploaded_file($this->file['tmp_name'],microtime().$this->storedFile);
                 return TRUE;
             }
         } else {
