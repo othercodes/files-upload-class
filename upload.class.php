@@ -33,8 +33,9 @@ class Upload {
      * @param array $allowedTypes lista de tipos MIME validos.
      * @return boolean
      */
-    public function validate($allowedSize, $allowedExt, $allowedTypes) {     
-        $this->storedFileExt = end(explode(".", $this->file['name']));
+    public function validate($allowedSize, $allowedExt, $allowedTypes) {
+        $sections = explode(".", $this->file['name']);
+        $this->storedFileExt = end($sections);
         $allowedSize = $allowedSize * (pow(1024,2));
         if($this->file['size'] > $allowedSize){
             $this->valid = FALSE;
