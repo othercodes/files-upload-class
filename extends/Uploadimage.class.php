@@ -2,7 +2,7 @@
 /**
  *
  */
-class UploadImage extends upload {
+class Uploadimage extends upload {
   
   public $width;
   public $height;
